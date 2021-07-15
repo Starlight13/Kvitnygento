@@ -28,6 +28,9 @@ class DeleteBannerBlockData implements DataPatchInterface, PatchRevertableInterf
         return [];
     }
 
+    /**
+     * @throws Exception
+     */
     public function apply()
     {
         try {
@@ -37,7 +40,7 @@ class DeleteBannerBlockData implements DataPatchInterface, PatchRevertableInterf
                 $block->delete();
             }
         } catch (Exception $exception) {
-            echo $exception->getMessage();
+            throw new Exception($exception->getMessage());
         }
     }
 

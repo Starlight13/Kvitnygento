@@ -4,6 +4,7 @@
 namespace Kvitny\Home\Setup\Patch\Data;
 
 
+use Exception;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -29,6 +30,9 @@ class UpdateDefaultThemeData implements DataPatchInterface, PatchRevertableInter
         $this->indexerFactory = $indexerFactory;
     }
 
+    /**
+     * @throws Exception
+     */
     public function apply()
     {
         $this->moduleDataSetup->startSetup();
@@ -44,13 +48,16 @@ class UpdateDefaultThemeData implements DataPatchInterface, PatchRevertableInter
                 }
             }
         }
-        catch (\Exception $exception) {
-            echo $exception->getMessage();
+        catch (Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
 
         $this->moduleDataSetup->endSetup();
     }
 
+    /**
+     * @throws Exception
+     */
     public function revert()
     {
         $this->moduleDataSetup->startSetup();
@@ -66,8 +73,8 @@ class UpdateDefaultThemeData implements DataPatchInterface, PatchRevertableInter
                 }
             }
         }
-        catch (\Exception $exception) {
-            echo $exception->getMessage();
+        catch (Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
 
         $this->moduleDataSetup->endSetup();

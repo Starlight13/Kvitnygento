@@ -24,6 +24,9 @@ class UpdateHomePageData implements DataPatchInterface, PatchRevertableInterface
         $this->pageFactory = $pageFactory;
     }
 
+    /**
+     * @throws Exception
+     */
     public function apply()
     {
         $pageData = [
@@ -54,12 +57,15 @@ class UpdateHomePageData implements DataPatchInterface, PatchRevertableInterface
                 $page->save();
             }
         } catch (Exception $exception) {
-            echo $exception->getMessage();
+            throw new Exception($exception->getMessage());
         }
         $this->moduleDataSetup->endSetup();
 
     }
 
+    /**
+     * @throws Exception
+     */
     public function revert()
     {
         $this->moduleDataSetup->startSetup();
@@ -71,7 +77,7 @@ class UpdateHomePageData implements DataPatchInterface, PatchRevertableInterface
             }
         }
         catch (Exception $exception) {
-            echo $exception->getMessage();
+            throw new Exception($exception->getMessage());
         }
 
     }

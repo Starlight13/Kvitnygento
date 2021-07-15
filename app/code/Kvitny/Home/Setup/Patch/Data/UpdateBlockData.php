@@ -29,6 +29,9 @@ class UpdateBlockData implements DataPatchInterface, PatchRevertableInterface
         return [];
     }
 
+    /**
+     * @throws Exception
+     */
     public function apply()
     {
         $blocks = [
@@ -53,7 +56,7 @@ class UpdateBlockData implements DataPatchInterface, PatchRevertableInterface
                     $block->setContent($blockData['content'])->save();
                 }
             } catch (Exception $exception) {
-                echo $exception->getMessage();
+                throw new Exception($exception->getMessage());
             }
         }
     }
