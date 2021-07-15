@@ -1,0 +1,42 @@
+.catalog__section {
+    .section();
+    padding: 20px;
+
+    .catalog__grid {
+        display: grid;
+        width: 80%;
+        grid-template-columns: repeat(3, 3fr);
+        grid-auto-rows: minmax(200px, auto);
+        column-gap: 30px;
+        row-gap: 30px;
+
+        a {
+            &:first-child {
+                grid-row-start: 1;
+                grid-row-end: 3;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .catalog__card {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            z-index: -1;
+        }
+
+
+
+        .card__footer {
+            background: rgba(68, 83, 64, 0.7);
+            height: 60px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            .centered();
+            color: @primary-color;
+        }
+    }
+}
+

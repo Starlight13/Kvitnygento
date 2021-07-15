@@ -1,0 +1,77 @@
+<?php
+/** @var ContactForm $block */
+/** @var UserDataProvider $viewModel */
+
+use Magento\Contact\Block\ContactForm;
+use Magento\Contact\ViewModel\UserDataProvider;
+
+$viewModel = $block->getViewModel();
+?>
+<section id="make-your-bouquet__section" class="make-your-bouquet__section">
+    <div class="make-your-bouquet__div">
+        <form class="form make-your-bouquet__form"
+              action="<?= $block->getFormAction() ?>"
+              id="make-your-bouquet-form"
+              method="post"
+              data-hasrequired="<?= __('* Required Fields') ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= __('Make your own bouquet') ?></span></legend>
+                <br/>
+                <div class="field note no-label">
+                    <p>
+                        <?= __('If no bouquet from our catalog suited you, you can order any other with
+                    your own design.') ?>
+                    </p>
+                    <p>
+                        <?= __("Fill out the form and we will call you") ?>
+                    </p>
+                </div>
+                <div class="field name required">
+                    <div class="control">
+                        <input name="name"
+                               id="name"
+                               title="<?= __('Name') ?>"
+                               placeholder="<?= __('Name') ?>"
+                               class="textfield input-text"
+                               type="text"
+                               data-validate="{required:true}"/>
+                    </div>
+                </div>
+                <div class="field email required">
+                    <div class="control">
+                        <input name="email"
+                               id="email"
+                               title="<?= __('Email') ?>"
+                               placeholder="<?= __('Email') ?>"
+                               class="textfield input-text"
+                               type="email"
+                               data-validate="{required:true, 'validate-email':true}"/>
+                    </div>
+                </div>
+                <div class="field telephone required">
+                    <div class="control">
+                        <input name="telephone"
+                               id="telephone"
+                               title="<?= __('Phone Number') ?>"
+                               placeholder="<?= __('Phone Number') ?>"
+                               class="textfield input-text"
+                               type="tel"
+                               data-validate="{required:true, 'validate-number':true}"/>
+
+                    </div>
+                </div>
+                <?= $block->getChildHtml('form.additional.info') ?>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <input type="hidden" name="hideit" id="hideit" value=""/>
+                    <button type="submit" title="<?= __('Submit') ?>"
+                            class="action submit primary">
+                        <span><?= __('Submit application') ?></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<?php
+/** @var \Kvitny\Banner\Block\Widget\Banner $block */
+?>
+<section class="banner" style="background-image: url('<?= $block->getImage() ?>')">
+    <div class="banner__text">
+        <?php if($block->getTitle()): ?>
+            <h1 class="banner__title"><?= __($block->getTitle()) ?></h1>
+        <?php endif; ?>
+
+        <?php if($block->getSubtitle()): ?>
+            <h4 class="banner__descript"><?= __($block->getSubtitle()) ?></h4>
+        <?php endif; ?>
+
+        <?php if($block->hasOrderButton()): ?>
+            <button class="button order__button"><span><?= __("Order") ?></span></button>
+        <?php endif; ?>
+    </div>
+</section>
