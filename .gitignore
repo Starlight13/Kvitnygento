@@ -33,7 +33,14 @@
 /pub/media/captcha/*
 /pub/static/*
 
-/var/*
+/var/*.*
+/var/cache
+/var/composer_home
+/var/log
+/var/page_cache
+/var/session
+/var/vendor
+/var/view_preprocessed
 /vendor/*
 /generated/*
 
