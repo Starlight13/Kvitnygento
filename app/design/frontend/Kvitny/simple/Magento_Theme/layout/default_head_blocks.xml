@@ -1,0 +1,6 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="Magento_Theme::my_favicon.png" rel="icon" sizes="32x32" />
+        <link src="Kvitny_Header::js/default.js"/>
+    </head>
+</page>

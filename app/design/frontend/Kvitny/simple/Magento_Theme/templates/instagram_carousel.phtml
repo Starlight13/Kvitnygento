@@ -1,0 +1,27 @@
+<?php /** @var Block $block */
+
+use Magento\Cms\Block\Block; ?>
+<section class="instagram__section">
+    <h2 class="section__title"><?= __("We are on Instagram") ?></h2>
+    <div class="instagram__carousel">
+        <?= $block->getChildHtml('instagram.images') ?>
+    </div>
+</section>
+<script type="text/x-magento-init">
+  {
+     "*": {
+         "instagram_carousel": {
+            "wrapper": ".instagram__carousel"
+         }
+     }
+  }
+</script>
+<script>
+    require(['jquery'], function($) {
+        $(document).ready( function() {
+            $(".instagram__carousel img").on('click', () => {
+                window.open("https://www.instagram.com/", "_blank")
+            })
+        })
+    });
+</script>

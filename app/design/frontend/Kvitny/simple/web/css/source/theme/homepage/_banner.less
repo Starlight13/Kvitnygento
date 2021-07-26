@@ -1,0 +1,45 @@
+.section-with-photo {
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.column-space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.banner {
+    margin: 0;
+    height: 700px;
+    .section-with-photo();
+
+    .banner__text {
+        margin-left: 12%;
+        .column-space-between();
+        max-width: 570px;
+    }
+
+    .banner__title {
+        margin: 0;
+        font-weight: 900;
+        font-size: 40px;
+    }
+
+    .banner__descript {
+        margin: 30px 0;
+        font-weight: @font-weight__regular;
+        font-size: @font-size__l;
+    }
+
+    .order__button {
+        background: @secondary__color;
+        box-shadow: @box-shadow;
+        width: 220px;
+        height: 48px;
+        .centered();
+        color: @primary__color;
+        border: none;
+    }
+}

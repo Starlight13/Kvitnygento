@@ -1,0 +1,62 @@
+<?php
+/** @var PopularCollection $block */
+
+use Kvitny\Home\Block\PopularCollection;
+
+$collection = $block->getProductCollection();
+?>
+<?php if (count($collection) != 0): ?>
+    <section class="popular-bouquet__section">
+        <h2 class="section__title">Popular bouquets</h2>
+        <div class="bouquet__carusel">
+            <?php foreach ($collection as $product): ?>
+                <?php $parentProduct = $block->getConfigurableParent($product->getId()) ?>
+                <?php $postParams = $block->getAddToCartPostParams($product) ?>
+                <a href="<?php if ($parentProduct) {
+                    echo $parentProduct->getProductUrl();
+                } else {
+                    echo $product->getProductUrl();
+                } ?>" class="bouquet__card">
+                    <img class="card__img" src="<?= $block->getProductImageUrl($product->getId()) ?>"/>
+                    <span class="card__title"><?= $product->getName() ?></span>
+                    <span class="card__price"><?= round($product->getPrice(), 2) ?> <?= $block->getCurrency() ?></span>
+                    <form data-role="tocart-form" action="<?= $postParams['action']; ?>" method="post"
+                          id="product_addtocart_form"
+                          novalidate="novalidate">
+                        <input type="hidden" name="product" value="<?= $postParams['data']['product']; ?>">
+                        <input type="hidden" name="name"
+                               value="<?= $postParams['data'][$block->getParamNameUrlEncoded()]; ?>">
+                        <?php echo $block->getBlockHtml('formkey') ?>
+                        <button type="submit"
+                                title="Add to Cart"
+                                class="action tocart primary button card__cart__button">
+                            <span><?= __('Add to Cart') ?></span>
+                        </button>
+                    </form>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <script type="text/x-magento-init">
+                            {
+                                "#product_addtocart_form": {
+                                    "catalogAddToCart": {
+                                        "bindSubmit": true
+                                    }
+                                }
+                            }
+                        </script>
+    <script type="text/x-magento-init">
+      {
+         "*": {
+             "popularCollection": {
+                "wrapper": ".bouquet__carusel"
+             }
+         }
+      }
+
+
+    </script>
+<?php endif; ?>
+
+
