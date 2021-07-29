@@ -8,6 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="page.main.title" remove="true" />
+
         <referenceContainer name="content">
             <block class="Kvitny\Home\Block\PopularCollection" name="popular.collection" template="Kvitny_Home::popularCollection.phtml" after="-"/>
             <block class="Kvitny\Home\Block\Catalog" name="catalog.section" template="Kvitny_Home::catalog.phtml" after="-"/>
@@ -20,5 +21,6 @@
                 </block>
             </block>
         </referenceContainer>
+
     </body>
 </page>

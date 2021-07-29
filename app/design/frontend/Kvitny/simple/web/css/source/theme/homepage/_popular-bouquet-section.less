@@ -1,94 +1,85 @@
-.popular-bouquet__section {
-    .section();
+& when (@media-common = true) {
+    .popular-bouquet__section {
+        .section();
 
-    margin-top: 0;
+        margin-top: 0;
 
-    .section__title {
-        margin-bottom: 50px;
-    }
+        .section__title {
+            margin-bottom: 50px;
+        }
 
-    .bouquet__carusel {
-        .slick-prev {
-            border: none;
-            &:before {
-                content: url(../images/arrow-left.png);
-            }
-            &:hover {
+        .bouquet__carusel {
+            .slick-prev {
                 border: none;
+                &:before {
+                    content: url(../images/arrow-left.png);
+                }
+                &:hover {
+                    border: none;
+                }
             }
-        }
 
-        .slick-next {
-            border: none;
-            &:before {
-                content: url(../images/arrow-right.png);
-            }
-            &:hover {
+            .slick-next {
                 border: none;
-            }
-        }
-
-        .slick-dots li {
-            &.slick-active {
-                opacity: 1;
-            }
-            width: 29.11px;
-            height: 6px;
-            background: @secondary__color;
-            opacity: 0.4;
-            margin: 6px;
-        }
-
-        .centered();
-
-        width: 91%;
-
-        .carusel-arrow {
-            padding-bottom: 100px;
-        }
-
-        .bouquet__card {
-            padding-bottom: 40px;
-            margin: 0 30px;
-            .column-space-between();
-            align-items: center;
-
-            .card__img {
-                width: 370px;
+                &:before {
+                    content: url(../images/arrow-right.png);
+                }
+                &:hover {
+                    border: none;
+                }
             }
 
-            .card__title {
-                margin-top: 20px;
-                font-weight: 600;
-                font-size: @font-size__l;
-            }
-
-            .card__price {
-                margin: 12px;
-                font-weight: 800;
-                font-size: 24px;
-                color: @secondary__color;
-            }
-
-            .card__cart__button {
+            .slick-dots li {
+                &.slick-active {
+                    opacity: 1;
+                }
+                width: 29.11px;
+                height: 6px;
                 background: @secondary__color;
-                box-shadow: @box-shadow;
-                color: @primary__color;
-                width: 136px;
-                height: 37px;
-                .centered();
+                opacity: 0.4;
+                margin: 6px;
+            }
+
+            .centered();
+
+            width: 91%;
+
+            .carusel-arrow {
+                padding-bottom: 100px;
+            }
+
+            .bouquet__card {
+                padding-bottom: 40px;
+                margin: 0 30px;
+                .column-space-between();
+                align-items: center;
+
+                .card__img {
+                    width: 100%;
+                }
+
+                .card__title {
+                    margin-top: 20px;
+                    font-weight: 600;
+                    font-size: @font-size__l;
+                }
+
+                .card__price {
+                    margin: 12px;
+                    font-weight: 800;
+                    font-size: 24px;
+                    color: @secondary__color;
+                }
+
+                .card__cart__button {
+                    background: @secondary__color;
+                    box-shadow: @box-shadow;
+                    color: @primary__color;
+                    width: 136px;
+                    height: 37px;
+                    .centered();
+                }
             }
         }
-
-        //.slick-dots li {
-        //    &.slick-active {
-        //        opacity: 1;
-        //    }
-        //    width: 29.11px;
-        //    height: 6px;
-        //    background: @secondary-color;
-        //    opacity: 0.4;
-        //    margin: 6px;
-        //}
     }
 }

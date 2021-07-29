@@ -1,45 +1,78 @@
-.section-with-photo {
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-}
 
-.column-space-between {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.banner {
-    margin: 0;
-    height: 700px;
-    .section-with-photo();
-
-    .banner__text {
-        margin-left: 12%;
-        .column-space-between();
-        max-width: 570px;
-    }
-
-    .banner__title {
+& when (@media-common = true) {
+    .banner {
         margin: 0;
-        font-weight: 900;
-        font-size: 40px;
-    }
+        height: 700px;
+        .section-with-photo();
+        background-position: 48% 0%;
 
-    .banner__descript {
-        margin: 30px 0;
-        font-weight: @font-weight__regular;
-        font-size: @font-size__l;
-    }
+        .banner__text {
+            .column-space-between();
+            max-width: 570px;
+        }
 
-    .order__button {
-        background: @secondary__color;
-        box-shadow: @box-shadow;
-        width: 220px;
-        height: 48px;
-        .centered();
-        color: @primary__color;
-        border: none;
+        .banner__title {
+            margin: 0;
+            font-weight: 900;
+            font-size: 40px;
+        }
+
+        .banner__descript {
+            margin: 30px 0;
+            font-weight: @font-weight__regular;
+            font-size: @font-size__l;
+        }
+
+        .order__button {
+            background: @secondary__color;
+            box-shadow: @box-shadow;
+            width: 220px;
+            height: 48px;
+            .centered();
+            color: @primary__color;
+            border: none;
+        }
     }
 }
+
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .banner {
+        .banner__text {
+            .banner__title {
+                font-size: 28px;
+            }
+
+            .banner__descript {
+                font-size: 14px;
+            }
+        }
+
+    }
+}
+
+// Mobile and Tablet
+// _________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .banner {
+        .banner__text {
+            padding: 10px;
+        }
+    }
+}
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .banner {
+        .banner__text {
+            padding: 20px 20px 20px 10%;
+        }
+    }
+}
+

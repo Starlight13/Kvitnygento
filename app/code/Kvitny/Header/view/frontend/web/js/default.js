@@ -11,14 +11,16 @@ require(['jquery', 'jquery/ui'], function($){
             $(".messages").hide('blind', {}, 500);
         }, 5000);
 
+        $(".header__navigation-icon").on('click', () => {
+            $("nav.navigation").slideToggle(500);
+        })
+
         if ($(".header.content > ul.header.links > li:nth-child(1)").attr('class') == "customer-welcome") {
-            console.log("Contains")
             $(".header.content > ul.header.links > li:nth-child(2)").on('click', function (event) {
                 event.preventDefault();
                 $("nav.navigation").slideToggle(500);
             })
         } else {
-            console.log("No Contains")
             $(".header.content > ul.header.links > li:nth-child(1)").on('click', function (event) {
                 event.preventDefault();
                 $("nav.navigation").slideToggle(500);

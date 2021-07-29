@@ -1,45 +1,62 @@
 <?php
 
-
 namespace Kvitny\Banner\Block\Adminhtml\Widget;
 
-
+use Magento\Backend\Block\Template;
+use Magento\Backend\Block\Template\Context as TemplateContext;
 use Magento\Framework\Data\Form\Element\AbstractElement as Element;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\Data\Form\Element\Factory;
+use Magento\Framework\Data\Form\Element\Factory as FormElementFactory;
 
 class ImagePicker extends Template
 {
-    protected $elementFactory;
+    /**
+     * @var Factory
+     */
+    protected $_elementFactory;
 
-    public function __construct(Template\Context $context,
-                                \Magento\Framework\Data\Form\Element\Factory $elementFactory,
-                                array $data = [])
+    /**
+     * @param TemplateContext $context
+     * @param FormElementFactory $elementFactory
+     * @param array $data
+     */
+    public function __construct(TemplateContext $context, FormElementFactory $elementFactory, $data = [])
     {
-        $this->elementFactory = $elementFactory;
+        $this->_elementFactory = $elementFactory;
         parent::__construct($context, $data);
     }
 
-    public function prepareElementHtml(Element $element) {
+    /**
+     * @param Element $element
+     * @return Element
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function prepareElementHtml(Element $element)
+    {
         $config = $this->_getData('config');
         $sourceUrl = $this->getUrl('cms/wysiwyg_images/index',
             ['target_element_id' => $element->getId(), 'type' => 'file']);
 
-        $picker = $this->getLayout()->createBlock('Magento\Backend\Block\Widget\Button')
+        /** @var \Magento\Backend\Block\Widget\Button $chooser */
+        $chooser = $this->getLayout()->createBlock('Magento\Backend\Block\Widget\Button')
             ->setType('button')
             ->setClass('btn-chooser')
             ->setLabel($config['button']['open'])
             ->setOnClick('MediabrowserUtility.openDialog(\'' . $sourceUrl . '\', 0, 0, "MediaBrowser", {})')
             ->setDisabled($element->getReadonly());
 
-        $input = $this->elementFactory->create("text", ['data' => $element->getData()]);
+        /** @var \Magento\Framework\Data\Form\Element\Text $input */
+        $input = $this->_elementFactory->create("text", ['data' => $element->getData()]);
         $input->setId($element->getId());
         $input->setForm($element->getForm());
         $input->setClass("widget-option input-text admin__control-text");
         if ($element->getRequired()) {
             $input->addClass('required-entry');
         }
-        $element->setData('after_element_html', $input->getElementHtml() . $picker->toHtml()
-            . "<script>require(['mage/adminhtml/browser']);</script>");
+
+        $element->setData('after_element_html', $input->getElementHtml()
+            . $chooser->toHtml() . "<script>require(['mage/adminhtml/browser']);</script>");
+
         return $element;
     }
 }

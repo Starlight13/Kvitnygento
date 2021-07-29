@@ -1,40 +1,32 @@
-.page-footer {
-    background: @secondary__color;
-    .centered();
-    height: 270px;
-    box-sizing: border-box;
-    color: @primary__color;
+& when (@media-common = true) {
+    .page-footer {
+        background: @secondary__color !important;
+        height: 270px;
+        box-sizing: border-box;
+        color: @primary__color;
 
-    .logo {
-        margin: 10px;
-    }
-
-    .footer.links {
-        padding: 0;
-        display: flex;
-        width: 405px;
-        justify-content: space-between;
-        margin: 0 20px;
-        li {
-            list-style: none;
-            margin: 0;
-            a {
-                font-size: @font-size__s;
-                color: @primary__color !important;
+        .footer.links {
+            padding: 0;
+            display: flex;
+            width: 405px;
+            justify-content: space-between;
+            margin: 0 20px;
+            li {
+                list-style: none;
+                margin: 0;
+                a {
+                    font-size: @font-size__s;
+                    color: @primary__color !important;
+                }
             }
         }
-    }
 
-    .footer__arrow-up {
-        margin: 30px;
-    }
+        .phone-number {
+            letter-spacing: 0.39px;
+            font-size: @font-size__s + 1px;
+        }
 
-    .footer__phone-number {
-        letter-spacing: 0.39px;
-        font-size: @font-size__s + 1px;
-    }
-
-    > li {
+        > li {
             list-style: none;
             border: 2px solid #FFFFFF;
             padding: 8px 15px;
@@ -43,5 +35,71 @@
             a {
                 color: @primary__color;
             }
+        }
+    }
+}
+
+//Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-footer {
+        .centered();
+
+        .footer__arrow-up {
+            margin: 30px;
+        }
+
+        .logo {
+            margin: 10px;
+        }
+    }
+}
+
+//Tablet
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m + 1) and (max-width: (@screen__l - 1)) {
+        .page-footer {
+            //background: @secondary__color;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: start;
+            align-content: space-evenly;
+            padding: 30px 50px;
+
+            .footer.links {
+                justify-self: end;
+            }
+
+            &>li {
+                justify-self: end;
+            }
+
+            .footer__arrow-up {
+                position: absolute;
+                left: 50%;;
+                transform: translate(-50%, 0);
+                bottom: 30px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+//Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-footer {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        padding: 30px 0 40px;
+
+        .footer__arrow-up {
+            position: absolute;
+            left: 50%;;
+            transform: translate(-50%, 0);
+            margin: 0;
+            bottom: 20px;
+        }
     }
 }

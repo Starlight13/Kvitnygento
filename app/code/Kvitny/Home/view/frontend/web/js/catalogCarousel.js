@@ -1,10 +1,11 @@
 define([
     'jquery',
-    'slick'
-], function ($) {
+    'slick',
+    'matchMedia'
+], function ($, MediaCheck) {
     'use strict';
 
-    $.widget('popularCollection.popularCollectionJs',{
+    $.widget('catalogCarousel.catalogCarouselJs',{
         options: {
             wrapper: null
         },
@@ -14,29 +15,20 @@ define([
         },
 
         _slider: function () {
-            let self = this;
-            $(self.options.wrapper).slick({
-                dots: true,
-                customPaging: function (slider, i) {
-                    return '<span class="button page-indicator"></span>';
-                },
-                arrows: true,
+            let self = this,
+                sliderOptions = {
                 infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
                 autoplay: true,
                 speed: 500,
                 autoplaySpeed: 3000,
+                mobileFirst: true,
                 responsive: [
                     {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                        }
+                        breakpoint: 769,
+                        settings: 'unslick'
                     },
                     {
-                        breakpoint: 768,
+                        breakpoint: 481,
                         settings: {
                             slidesToShow: 2,
                             slidesToScroll: 1,
@@ -44,7 +36,7 @@ define([
                         }
                     },
                     {
-                        breakpoint: 480,
+                        breakpoint: 1,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1,
@@ -52,11 +44,17 @@ define([
                         }
                     }
                 ]
+            }
+
+            mediaCheck({
+                media: '(max-width: 768px)',
+                entry: function () {
+                    $(self.options.wrapper).slick(sliderOptions);
+                },
             });
         }
-
     });
 
-    return $.popularCollection.popularCollectionJs;
+    return $.catalogCarousel.catalogCarouselJs;
 
 });

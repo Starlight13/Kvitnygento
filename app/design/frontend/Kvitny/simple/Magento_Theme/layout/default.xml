@@ -1,6 +1,27 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+
+        <referenceBlock name="header" remove="true"/>
+        <referenceBlock name="header.panel" remove="true"/>
+        <referenceBlock name="authorization-link-login" remove="true"/>
+        <referenceBlock name="register-link" remove="true"/>
+        <referenceBlock name="authorization-link" remove="true"/>
+        <referenceBlock name="top.search" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceBlock name="search-term-popular-link" remove="true"/>
+        <referenceBlock name="privacy-policy-link" remove="true"/>
+        <referenceBlock name="catalog-search-advanced-link" remove="true"/>
+        <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <referenceBlock name="contact-us-link" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+
+        <move element="minicart" destination="header-wrapper" after="order-call"/>
+        <move element="catalog.topnav" destination="header.container"/>
+        <move element="header.links" destination="header-wrapper" as="header.links" after="logo"/>
+        <move element="footer_links" destination="footer-container" after="footer.logo" as="footer_links"/>
+
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/kvitny_logo.svg</argument>
@@ -10,16 +31,7 @@
             </arguments>
         </referenceBlock>
 
-        <referenceBlock name="header" remove="true"/>
-        <referenceBlock name="header.panel" remove="true"/>
-
-
-        <move element="header.links" destination="header-wrapper" as="header.links" after="logo"/>
-
         <referenceBlock name="header.links">
-            <referenceBlock name="authorization-link-login" remove="true"/>
-            <referenceBlock name="register-link" remove="true"/>
-            <referenceBlock name="authorization-link" remove="true"/>
             <block class="Magento\Framework\View\Element\Html\Link" name="catalog-link">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Catalog</argument>
@@ -50,23 +62,17 @@
         <referenceBlock name="header-wrapper">
             <block class="Kvitny\Header\Block\PhoneNumber" name="header.phone"
                    template="Kvitny_Header::phoneNumber.phtml"/>
-        </referenceBlock>
-
-        <referenceBlock name="header-wrapper">
             <block class="Magento\Framework\View\Element\Html\Link" name="order-call">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Order a call</argument>
                     <argument name="path" xsi:type="string" translate="true">#</argument>
                 </arguments>
             </block>
-            <block class="Magento\Framework\View\Element\Template" name="cart.total" template="Magento_Theme::cartSubtotal.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="cart.total"
+                   template="Magento_Theme::cartSubtotal.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="navigation.burger"
+                   template="Magento_Theme::navigation-burger.phtml" after="cart.total"/>
         </referenceBlock>
-
-        <move element="minicart" destination="header-wrapper" after="order-call"/>
-        <move element="catalog.topnav" destination="header.container"/>
-
-        <referenceBlock name="top.search" remove="true"/>
-        <referenceBlock name="catalog.compare.link" remove="true"/>
 
         <referenceContainer name="footer-container">
             <block class="Magento\Theme\Block\Html\Header\Logo" name="footer.logo">
@@ -77,20 +83,23 @@
                     <argument name="logo_alt" xsi:type="string">Kvitny Logo</argument>
                 </arguments>
             </block>
+            <block class="Kvitny\Header\Block\PhoneNumber" name="footer.phone"
+                   template="Kvitny_Header::phoneNumber.phtml"/>
             <referenceBlock name="footer-container">
-                <block class="Kvitny\Header\Block\PhoneNumber" name="footer.phone"
-                       template="Kvitny_Header::phoneNumber.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="footer.arrow.up" after="footer.phone"
+                       template="Magento_Theme::arrow-up.phtml"/>
+                <block class="Magento\Framework\View\Element\Html\Link" name="footer.order-call"
+                       after="footer.arrow.up">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">Order a call</argument>
+                        <argument name="path" xsi:type="string" translate="true">#</argument>
+                    </arguments>
+                </block>
             </referenceBlock>
-
         </referenceContainer>
 
-        <move element="footer_links" destination="footer-container" after="footer.logo" as="footer_links"/>
+
         <referenceBlock name="footer_links">
-            <referenceBlock name="search-term-popular-link" remove="true"/>
-            <referenceBlock name="privacy-policy-link" remove="true"/>
-            <referenceBlock name="catalog-search-advanced-link" remove="true"/>
-            <referenceBlock name="sales-guest-form-link" remove="true"/>
-            <referenceBlock name="contact-us-link" remove="true"/>
             <block class="Magento\Framework\View\Element\Html\Link" name="catalog-link-footer">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Catalog</argument>
@@ -116,16 +125,6 @@
                 </arguments>
             </block>
         </referenceBlock>
-        <referenceBlock name="footer-container">
-            <block class="Magento\Framework\View\Element\Template" name="footer.arrow.up" after="footer.phone" template="Magento_Theme::arrow-up.phtml"/>
-            <block class="Magento\Framework\View\Element\Html\Link" name="footer.order-call" after="footer.arrow.up">
-                <arguments>
-                    <argument name="label" xsi:type="string" translate="true">Order a call</argument>
-                    <argument name="path" xsi:type="string" translate="true">#</argument>
-                </arguments>
-            </block>
-        </referenceBlock>
-        <referenceBlock name="copyright" remove="true"/>
-        <referenceBlock name="form.subscribe" remove="true" />
+
     </body>
 </page>

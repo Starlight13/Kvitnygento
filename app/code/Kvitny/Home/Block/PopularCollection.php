@@ -12,6 +12,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Framework\App\Action\Action;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 
 class PopularCollection extends Template
 {
@@ -77,6 +78,7 @@ class PopularCollection extends Template
         $collection
             ->addAttributeToSelect('*')
             ->addStoreFilter($this->getStoreId())
+            ->addAttributeToFilter('status', Status::STATUS_ENABLED)
             ->setPageSize(count($productIds));
         return $collection;
     }
@@ -95,10 +97,9 @@ class PopularCollection extends Template
     }
 
     public function getConfigurableParent($id) {
-        $parentId = $this->configurable->getParentIdsByChild($id);
-        if ($parentId) {
-            return $this->productFactory->create()->load($parentId);
-        }
+        $product = $this->configurable->getParentIdsByChild($id);
+        if (isset($product[0]))
+            return $this->productFactory->create()->load($product[0]);
         return null;
     }
 
