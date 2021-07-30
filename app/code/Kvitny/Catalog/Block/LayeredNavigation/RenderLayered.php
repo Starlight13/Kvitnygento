@@ -11,8 +11,22 @@ use Magento\Swatches\Helper\Data;
 use Magento\Swatches\Helper\Media;
 use Magento\Theme\Block\Html\Pager;
 
+/**
+ * Class RenderLayered
+ * @package Kvitny\Catalog\Block\LayeredNavigation
+ */
 class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLayered
 {
+    /**
+     * RenderLayered constructor.
+     * @param Context $context
+     * @param Attribute $eavAttribute
+     * @param AttributeFactory $layerAttribute
+     * @param Data $swatchHelper
+     * @param Media $mediaHelper
+     * @param array $data
+     * @param Pager|null $htmlPagerBlock
+     */
     public function __construct(
         Context $context,
         Attribute $eavAttribute,
@@ -21,10 +35,10 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         Media $mediaHelper,
         array $data = [],
         ?Pager $htmlPagerBlock = null
-    )
-    {
+    ) {
         parent::__construct($context, $eavAttribute, $layerAttribute, $swatchHelper, $mediaHelper, $data, $htmlPagerBlock);
     }
+
     /**
      * Get view data for option
      *

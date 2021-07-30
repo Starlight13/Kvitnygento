@@ -1,4 +1,7 @@
-<?php /**@var \Kvitny\Home\Block\Catalog $block*/
+<?php /**@var Catalog $block*/
+
+use Kvitny\Home\Block\Catalog;
+
 $categories = $block->getCategories();
 ?>
 <section class="catalog__section">
@@ -13,17 +16,16 @@ $categories = $block->getCategories();
                         </div>
                     </div>
                 </a>
-            <?php endif;?>
-        <?php endforeach; ?>
-
+            <?php endif ?>
+        <?php endforeach ?>
     </div>
 </section>
 <script type="text/x-magento-init">
-      {
-         "*": {
-             "catalogCarousel": {
-                "wrapper": ".catalog__grid"
-             }
+  {
+     "*": {
+         "catalogCarousel": {
+            "wrapper": ".catalog__grid"
          }
-      }
+     }
+  }
 </script>

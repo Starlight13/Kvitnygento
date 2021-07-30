@@ -3,27 +3,8 @@
     position: relative;
     width: 100%;
     margin: 0;
+
     .instagram__carousel {
-        .slick-prev {
-            border: none;
-            &:before {
-                content: url(../images/arrow-left.png);
-            }
-            &:hover {
-                border: none;
-            }
-        }
-
-        .slick-next {
-            border: none;
-            &:before {
-                content: url(../images/arrow-right.png);
-            }
-            &:hover {
-                border: none;
-            }
-        }
-
         .centered();
         width: 90%;
 
@@ -34,15 +15,40 @@
             cursor: pointer;
         }
 
-        .slick-dots li {
-            &.slick-active {
-                opacity: 1;
+        .slick-prev {
+            border: none;
+
+            &:before {
+                content: url('@{baseDir}/images/arrow-left.png');
             }
+
+            &:hover {
+                border: none;
+            }
+        }
+
+        .slick-next {
+            border: none;
+
+            &:before {
+                content: url('@{baseDir}/images/arrow-right.png');
+            }
+
+            &:hover {
+                border: none;
+            }
+        }
+
+        .slick-dots li {
             width: 29.11px;
             height: 6px;
             background: @secondary__color;
             opacity: 0.4;
             margin: 6px;
+
+            &.slick-active {
+                opacity: 1;
+            }
         }
     }
 }

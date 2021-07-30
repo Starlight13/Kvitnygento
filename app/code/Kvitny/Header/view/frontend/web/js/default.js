@@ -1,4 +1,3 @@
-
 require(['jquery', 'jquery/ui'], function($){
     jQuery(document).ready( function() {
         if(document.body.classList.contains("cms-index-index")) {

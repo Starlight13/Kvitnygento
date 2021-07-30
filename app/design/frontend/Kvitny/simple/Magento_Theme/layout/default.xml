@@ -17,10 +17,19 @@
         <referenceBlock name="copyright" remove="true"/>
         <referenceBlock name="form.subscribe" remove="true"/>
 
-        <move element="minicart" destination="header-wrapper" after="order-call"/>
-        <move element="catalog.topnav" destination="header.container"/>
-        <move element="header.links" destination="header-wrapper" as="header.links" after="logo"/>
-        <move element="footer_links" destination="footer-container" after="footer.logo" as="footer_links"/>
+        <move element="minicart"
+              destination="cart.wrapper"
+              before="-"/>
+        <move element="catalog.topnav"
+              destination="header.container"/>
+        <move element="header.links"
+              destination="header-wrapper"
+              as="header.links"
+              after="logo"/>
+        <move element="footer_links"
+              destination="footer-container"
+              after="footer.logo"
+              as="footer_links"/>
 
         <referenceBlock name="logo">
             <arguments>
@@ -60,7 +69,8 @@
 
 
         <referenceBlock name="header-wrapper">
-            <block class="Kvitny\Header\Block\PhoneNumber" name="header.phone"
+            <block class="Kvitny\Header\Block\PhoneNumber"
+                   name="header.phone"
                    template="Kvitny_Header::phoneNumber.phtml"/>
             <block class="Magento\Framework\View\Element\Html\Link" name="order-call">
                 <arguments>
@@ -68,10 +78,18 @@
                     <argument name="path" xsi:type="string" translate="true">#</argument>
                 </arguments>
             </block>
-            <block class="Magento\Framework\View\Element\Template" name="cart.total"
-                   template="Magento_Theme::cartSubtotal.phtml"/>
-            <block class="Magento\Framework\View\Element\Template" name="navigation.burger"
-                   template="Magento_Theme::navigation-burger.phtml" after="cart.total"/>
+            <container name="cart.wrapper"
+                       htmlTag="div" htmlClass="cart-wrapper"
+                       after="order-call">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="cart.total"
+                       template="Magento_Theme::cartSubtotal.phtml"
+                       after="minicart"/>
+            </container>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="navigation.burger"
+                   template="Magento_Theme::navigation-burger.phtml"
+                   after="cart.total"/>
         </referenceBlock>
 
         <referenceContainer name="footer-container">
@@ -86,9 +104,12 @@
             <block class="Kvitny\Header\Block\PhoneNumber" name="footer.phone"
                    template="Kvitny_Header::phoneNumber.phtml"/>
             <referenceBlock name="footer-container">
-                <block class="Magento\Framework\View\Element\Template" name="footer.arrow.up" after="footer.phone"
+                <block class="Magento\Framework\View\Element\Template"
+                       name="footer.arrow.up"
+                       after="footer.phone"
                        template="Magento_Theme::arrow-up.phtml"/>
-                <block class="Magento\Framework\View\Element\Html\Link" name="footer.order-call"
+                <block class="Magento\Framework\View\Element\Html\Link"
+                       name="footer.order-call"
                        after="footer.arrow.up">
                     <arguments>
                         <argument name="label" xsi:type="string" translate="true">Order a call</argument>

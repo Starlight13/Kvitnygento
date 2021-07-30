@@ -58,5 +58,4 @@ define([
     });
 
     return $.instagram_carousel.instagram_carouselJs;
-
 });

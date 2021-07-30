@@ -1,7 +1,6 @@
 & when (@media-common = true) {
     .popular-bouquet__section {
         .section();
-
         margin-top: 0;
 
         .section__title {
@@ -9,11 +8,16 @@
         }
 
         .bouquet__carusel {
+            .centered();
+            width: 90%;
+
             .slick-prev {
                 border: none;
+
                 &:before {
-                    content: url(../images/arrow-left.png);
+                    content: url('@{baseDir}/images/arrow-left.png');
                 }
+
                 &:hover {
                     border: none;
                 }
@@ -21,37 +25,36 @@
 
             .slick-next {
                 border: none;
+
                 &:before {
-                    content: url(../images/arrow-right.png);
+                    content: url('@{baseDir}/images/arrow-right.png');
                 }
+
                 &:hover {
                     border: none;
                 }
             }
 
             .slick-dots li {
-                &.slick-active {
-                    opacity: 1;
-                }
                 width: 29.11px;
                 height: 6px;
                 background: @secondary__color;
                 opacity: 0.4;
                 margin: 6px;
+
+                &.slick-active {
+                    opacity: 1;
+                }
             }
-
-            .centered();
-
-            width: 91%;
 
             .carusel-arrow {
                 padding-bottom: 100px;
             }
 
             .bouquet__card {
+                .column-space-between();
                 padding-bottom: 40px;
                 margin: 0 30px;
-                .column-space-between();
                 align-items: center;
 
                 .card__img {
@@ -72,12 +75,12 @@
                 }
 
                 .card__cart__button {
+                    .centered();
                     background: @secondary__color;
                     box-shadow: @box-shadow;
                     color: @primary__color;
                     width: 136px;
                     height: 37px;
-                    .centered();
                 }
             }
         }

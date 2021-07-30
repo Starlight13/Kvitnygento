@@ -2,17 +2,20 @@
 
 namespace Kvitny\Home\Block;
 
+use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Helper\Image;
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\ProductFactory;
-use Magento\Framework\View\Element\Template\Context;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 use Magento\Sales\Model\ResourceModel\Report\Bestsellers\CollectionFactory as BestSellersCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use Magento\Catalog\Block\Product\ListProduct;
-use Magento\Framework\App\Action\Action;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
-use Magento\Catalog\Model\Product\Attribute\Source\Status;
 
 class PopularCollection extends Template
 {
@@ -42,8 +45,23 @@ class PopularCollection extends Template
      */
     protected $listProduct;
 
+    /**
+     * @var Configurable
+     */
     protected Configurable $configurable;
 
+    /**
+     * PopularCollection constructor.
+     * @param Context $context
+     * @param Image $imageHelper
+     * @param ProductFactory $productFactory
+     * @param CollectionFactory $productCollectionFactory
+     * @param StoreManagerInterface $storeManager
+     * @param BestSellersCollectionFactory $bestSellersCollectionFactory
+     * @param ListProduct $listProduct
+     * @param Configurable $configurable
+     * @param array $data
+     */
     public function __construct(
         Context $context,
         Image $imageHelper,
@@ -54,8 +72,7 @@ class PopularCollection extends Template
         ListProduct $listProduct,
         Configurable $configurable,
         $data = []
-    )
-    {
+    ) {
         $this->imageHelper = $imageHelper;
         $this->productFactory = $productFactory;
         $this->_bestSellersCollectionFactory = $bestSellersCollectionFactory;
@@ -66,6 +83,9 @@ class PopularCollection extends Template
         parent::__construct($context, $data);
     }
 
+    /**
+     * @return Collection
+     */
     public function getProductCollection()
     {
         $productIds = [];
@@ -83,6 +103,10 @@ class PopularCollection extends Template
         return $collection;
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function getProductImageUrl($id)
     {
         try
@@ -96,6 +120,10 @@ class PopularCollection extends Template
         return $this->imageHelper->init($product, 'carousel_image')->getUrl();
     }
 
+    /**
+     * @param $id
+     * @return Product|null
+     */
     public function getConfigurableParent($id) {
         $product = $this->configurable->getParentIdsByChild($id);
         if (isset($product[0]))
@@ -103,15 +131,26 @@ class PopularCollection extends Template
         return null;
     }
 
+    /**
+     * @return string
+     * @throws NoSuchEntityException
+     */
     public function getCurrency()
     {
         return $this->_storeManager->getStore()->getCurrentCurrencyCode();
     }
 
+    /**
+     * @param $product
+     * @return array
+     */
     public function getAddToCartPostParams($product) {
         return $this->listProduct->getAddToCartPostParams($product);
     }
 
+    /**
+     * @return string
+     */
     public function getParamNameUrlEncoded() {
         return Action::PARAM_NAME_URL_ENCODED;
     }

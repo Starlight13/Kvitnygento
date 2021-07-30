@@ -1,7 +1,9 @@
 <?php
-/** @var \Kvitny\Catalog\Block\CustomContent $block */
+/** @var CustomContent $block */
+
+use Kvitny\Catalog\Block\CustomContent;
+
 ?>
 <?if ($content = $block->getCustomContent()): ?>
     <div class="custom-content"><?= $content ?></div>
-<?endif;?>
-
+<?endif?>

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Kvitny\Home\Setup\Patch\Data;
-
 
 use Exception;
 use Magento\Cms\Model\PageFactory;

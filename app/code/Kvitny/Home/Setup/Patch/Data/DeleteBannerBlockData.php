@@ -1,14 +1,16 @@
 <?php
 
-
 namespace Kvitny\Home\Setup\Patch\Data;
-
 
 use Exception;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
+/**
+ * Class DeleteBannerBlockData
+ * @package Kvitny\Home\Setup\Patch\Data
+ */
 class DeleteBannerBlockData implements DataPatchInterface, PatchRevertableInterface
 {
     protected BlockFactory $blockFactory;
@@ -43,6 +45,7 @@ class DeleteBannerBlockData implements DataPatchInterface, PatchRevertableInterf
             throw new Exception($exception->getMessage());
         }
     }
+
 
     public function revert()
     {

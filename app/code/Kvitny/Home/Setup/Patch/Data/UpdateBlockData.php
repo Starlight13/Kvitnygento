@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Kvitny\Home\Setup\Patch\Data;
-
 
 use Exception;
 use Magento\Cms\Model\BlockFactory;
@@ -11,9 +9,15 @@ use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
 class UpdateBlockData implements DataPatchInterface, PatchRevertableInterface
 {
-
+    /**
+     * @var BlockFactory
+     */
     protected BlockFactory $blockFactory;
 
+    /**
+     * UpdateBlockData constructor.
+     * @param BlockFactory $blockFactory
+     */
     public function __construct(BlockFactory $blockFactory)
     {
         $this->blockFactory = $blockFactory;

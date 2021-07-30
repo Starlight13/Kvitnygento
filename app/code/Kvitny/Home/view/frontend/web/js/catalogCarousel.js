@@ -56,5 +56,4 @@ define([
     });
 
     return $.catalogCarousel.catalogCarouselJs;
-
 });

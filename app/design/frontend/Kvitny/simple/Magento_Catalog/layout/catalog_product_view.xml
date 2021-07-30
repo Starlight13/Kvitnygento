@@ -11,10 +11,14 @@
         <referenceBlock name="view.addto.compare" remove="true"/>
         <referenceBlock name="product.info.stock.sku" remove="true"/>
 
-        <move element="view.addto.wishlist" destination="product.info.main" before="-"/>
+        <move element="view.addto.wishlist"
+              destination="product.info.main"
+              before="-"/>
 
         <referenceBlock name="content">
-            <block class="Kvitny\Catalog\Block\CustomContent" name="custom.content" template="Kvitny_Catalog::custom_content.phtml"/>
+            <block class="Kvitny\Catalog\Block\CustomContent"
+                   name="custom.content"
+                   template="Kvitny_Catalog::custom_content.phtml"/>
         </referenceBlock>
 
     </body>

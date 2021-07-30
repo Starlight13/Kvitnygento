@@ -4,10 +4,17 @@ namespace Kvitny\Banner\Block\Adminhtml\Widget;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context as TemplateContext;
+use Magento\Backend\Block\Widget\Button;
 use Magento\Framework\Data\Form\Element\AbstractElement as Element;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Factory as FormElementFactory;
+use Magento\Framework\Data\Form\Element\Text;
+use Magento\Framework\Exception\LocalizedException;
 
+/**
+ * Class ImagePicker
+ * @package Kvitny\Banner\Block\Adminhtml\Widget
+ */
 class ImagePicker extends Template
 {
     /**
@@ -20,7 +27,10 @@ class ImagePicker extends Template
      * @param FormElementFactory $elementFactory
      * @param array $data
      */
-    public function __construct(TemplateContext $context, FormElementFactory $elementFactory, $data = [])
+    public function __construct(
+        TemplateContext $context,
+        FormElementFactory $elementFactory,
+        $data = [])
     {
         $this->_elementFactory = $elementFactory;
         parent::__construct($context, $data);
@@ -29,7 +39,7 @@ class ImagePicker extends Template
     /**
      * @param Element $element
      * @return Element
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function prepareElementHtml(Element $element)
     {
@@ -37,7 +47,7 @@ class ImagePicker extends Template
         $sourceUrl = $this->getUrl('cms/wysiwyg_images/index',
             ['target_element_id' => $element->getId(), 'type' => 'file']);
 
-        /** @var \Magento\Backend\Block\Widget\Button $chooser */
+        /** @var Button $chooser */
         $chooser = $this->getLayout()->createBlock('Magento\Backend\Block\Widget\Button')
             ->setType('button')
             ->setClass('btn-chooser')
@@ -45,7 +55,7 @@ class ImagePicker extends Template
             ->setOnClick('MediabrowserUtility.openDialog(\'' . $sourceUrl . '\', 0, 0, "MediaBrowser", {})')
             ->setDisabled($element->getReadonly());
 
-        /** @var \Magento\Framework\Data\Form\Element\Text $input */
+        /** @var Text $input */
         $input = $this->_elementFactory->create("text", ['data' => $element->getData()]);
         $input->setId($element->getId());
         $input->setForm($element->getForm());

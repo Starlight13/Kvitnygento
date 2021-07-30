@@ -1,29 +1,57 @@
 <?php
 
-
 namespace Kvitny\Home\Setup\Patch\Data;
-
 
 use Exception;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
-use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 use Magento\Indexer\Model\IndexerFactory;
+use Magento\Theme\Model\ResourceModel\Theme\CollectionFactory;
 
+/**
+ * Class UpdateDefaultThemeData
+ * @package Kvitny\Home\Setup\Patch\Data
+ */
 class UpdateDefaultThemeData implements DataPatchInterface, PatchRevertableInterface
 {
     const THEME_NAME = 'Kvitny/simple';
 
+    /**
+     * @var CollectionFactory
+     */
     private CollectionFactory $collectionFactory;
+
+    /**
+     * @var ModuleDataSetupInterface
+     */
     protected ModuleDataSetupInterface $moduleDataSetup;
+
+    /**
+     * @var IndexerFactory
+     */
     protected IndexerFactory $indexerFactory;
+
+    /**
+     * @var WriterInterface
+     */
     protected WriterInterface $writer;
 
 
-    public function __construct(WriterInterface $writer, CollectionFactory $collectionFactory, ModuleDataSetupInterface $moduleDataSetup, IndexerFactory $indexerFactory)
-    {
+    /**
+     * UpdateDefaultThemeData constructor.
+     * @param WriterInterface $writer
+     * @param CollectionFactory $collectionFactory
+     * @param ModuleDataSetupInterface $moduleDataSetup
+     * @param IndexerFactory $indexerFactory
+     */
+    public function __construct(
+        WriterInterface $writer,
+        CollectionFactory $collectionFactory,
+        ModuleDataSetupInterface $moduleDataSetup,
+        IndexerFactory $indexerFactory
+    ) {
         $this->writer = $writer;
         $this->collectionFactory = $collectionFactory;
         $this->moduleDataSetup = $moduleDataSetup;

@@ -1,10 +1,9 @@
 <?php
 
-
 namespace Kvitny\Home\Controller\Index;
 
-use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\Controller\ResultFactory;
 
 class MakeBouquet extends Action
 {

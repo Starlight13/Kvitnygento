@@ -4,6 +4,7 @@
     <preference for="Magento\Swatches\Block\LayeredNavigation\RenderLayered"
                 type="Kvitny\Catalog\Block\LayeredNavigation\RenderLayered"/>
     <type name="Magento\Catalog\Helper\Product\View">
-        <plugin name="Kvitny_Catalog_State_Selector_Plugin" type="Kvitny\Catalog\Plugin\Helper\Product\View"/>
+        <plugin name="Kvitny_Catalog_State_Selector_Plugin"
+                type="Kvitny\Catalog\Plugin\Helper\Product\View"/>
     </type>
 </config>

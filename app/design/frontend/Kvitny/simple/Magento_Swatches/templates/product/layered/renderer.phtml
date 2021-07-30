@@ -1,15 +1,13 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-// phpcs:disable PSR2.ControlStructures.SwitchDeclaration
-// phpcs:disable Generic.WhiteSpace.ScopeIndent
+/** @var $block RenderLayered */
+/** @var SecureHtmlRenderer $secureRenderer */
+/** @var Escaper $escaper */
 
-/** @var $block \Kvitny\Catalog\Block\LayeredNavigation\RenderLayered */
-/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
-/** @var \Magento\Framework\Escaper $escaper */
+use Kvitny\Catalog\Block\LayeredNavigation\RenderLayered;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
 ?>
 
 <?php $swatchData = $block->getSwatchData(); ?>

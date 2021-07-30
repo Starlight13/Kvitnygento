@@ -58,5 +58,4 @@ define([
     });
 
     return $.popularCollection.popularCollectionJs;
-
 });

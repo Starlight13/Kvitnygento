@@ -3,25 +3,25 @@
         .section();
         padding: 20px;
 
-        .catalog__grid {
-            a {
+        .catalog__grid a {
+            .centered();
+
+            .catalog__card {
+                position: relative;
+                z-index: -1;
+                background-repeat: no-repeat !important;
+                background-size: cover !important;
+                background-position: center !important;
+            }
+
+            .card__footer {
                 .centered();
-                .catalog__card {
-                    position: relative;
-                    z-index: -1;
-                    background-repeat: no-repeat !important;
-                    background-size: cover !important;
-                    background-position: center !important;
-                }
-                .card__footer {
-                    background: rgba(68, 83, 64, 0.7);
-                    height: 60px;
-                    width: 100%;
-                    position: absolute;
-                    bottom: 0;
-                    .centered();
-                    color: @primary__color;
-                }
+                background: rgba(68, 83, 64, 0.7);
+                height: 60px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                color: @primary__color;
             }
         }
     }
@@ -29,22 +29,44 @@
 
 //Desktop
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
-    .catalog__section {
-        .catalog__grid {
+    .catalog__section .catalog__grid {
+        display: grid;
+        width: 80%;
+        grid-template-columns: 2.5fr repeat(2, 3fr);
+        grid-auto-rows: minmax(200px, auto);
+        column-gap: 30px;
+        row-gap: 30px;
+
+        a:first-child {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            height: 100%;
+            width: 100%;
+        }
+
+        .catalog__card {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+//Tablet
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
+        .catalog__section .catalog__grid {
             display: grid;
-            width: 80%;
-            grid-template-columns: 2.5fr repeat(2, 3fr);
+            width: 100%;
+            grid-template-columns: repeat(2, 3fr);
             grid-auto-rows: minmax(200px, auto);
             column-gap: 30px;
             row-gap: 30px;
 
-            a {
-                &:first-child {
-                    grid-row-start: 1;
-                    grid-row-end: 3;
-                    height: 100%;
-                    width: 100%;
-                }
+            a:first-child {
+                grid-row-start: 1;
+                grid-row-end: 3;
+                height: 100%;
+                width: 100%;
             }
 
             .catalog__card {
@@ -55,49 +77,16 @@
     }
 }
 
-//Tablet
-& when (@media-target = 'desktop'), (@media-target = 'all') {
-    @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
-        .catalog__section {
-            .catalog__grid {
-                display: grid;
-                width: 100%;
-                grid-template-columns: repeat(2, 3fr);
-                grid-auto-rows: minmax(200px, auto);
-                column-gap: 30px;
-                row-gap: 30px;
-
-                a {
-                    &:first-child {
-                        grid-row-start: 1;
-                        grid-row-end: 3;
-                        height: 100%;
-                        width: 100%;
-                    }
-                }
-
-                .catalog__card {
-                    height: 100%;
-                    width: 100%;
-                }
-            }
-        }
-    }
-}
-
 //Mobile
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .catalog__section {
-        .catalog__grid {
+    .catalog__section .catalog__grid {
+        height: 250px;
+        width: 100%;
+
+        a .catalog__card {
+            width: 250px;
             height: 250px;
-            width: 100%;
-            a {
-                .catalog__card {
-                    width: 250px;
-                    height: 250px;
-                    margin: 0;
-                }
-            }
+            margin: 0;
         }
     }
 }

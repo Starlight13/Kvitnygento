@@ -1,18 +1,35 @@
 <?php
 
-
 namespace Kvitny\Banner\Plugin;
 
-
+/**
+ * Class Widget
+ * @package Kvitny\Banner\Plugin
+ */
 class Widget
 {
+    /**
+     * @var \Magento\Backend\Helper\Data
+     */
     protected $backendData;
 
+    /**
+     * Widget constructor.
+     * @param \Magento\Backend\Helper\Data $backendData
+     */
     public function __construct(
         \Magento\Backend\Helper\Data $backendData
     ) {
         $this->backendData = $backendData;
     }
+
+    /**
+     * @param \Magento\Widget\Model\Widget $subject
+     * @param $type
+     * @param array $params
+     * @param bool $asIs
+     * @return array
+     */
     public function beforeGetWidgetDeclaration(
         \Magento\Widget\Model\Widget $subject,
         $type,

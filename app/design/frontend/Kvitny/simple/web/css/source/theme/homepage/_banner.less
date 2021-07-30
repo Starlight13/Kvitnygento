@@ -1,9 +1,8 @@
-
 & when (@media-common = true) {
     .banner {
+        .section-with-photo();
         margin: 0;
         height: 700px;
-        .section-with-photo();
         background-position: 48% 0%;
 
         .banner__text {
@@ -24,11 +23,11 @@
         }
 
         .order__button {
+            .centered();
             background: @secondary__color;
             box-shadow: @box-shadow;
             width: 220px;
             height: 48px;
-            .centered();
             color: @primary__color;
             border: none;
         }
@@ -39,17 +38,14 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
-    .banner {
-        .banner__text {
-            .banner__title {
-                font-size: 28px;
-            }
-
-            .banner__descript {
-                font-size: 14px;
-            }
+    .banner .banner__text {
+        .banner__title {
+            font-size: @font-size__l * 2;
         }
 
+        .banner__descript {
+            font-size: @font-size__l - 1px;
+        }
     }
 }
 
@@ -57,10 +53,8 @@
 // _________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .banner {
-        .banner__text {
-            padding: 10px;
-        }
+    .banner .banner__text {
+        padding: 10px;
     }
 }
 
@@ -69,10 +63,8 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-    .banner {
-        .banner__text {
-            padding: 20px 20px 20px 10%;
-        }
+    .banner .banner__text {
+        padding: 20px 20px 20px 10%;
     }
 }
 
