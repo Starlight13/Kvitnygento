@@ -4,6 +4,9 @@
 use Kvitny\Catalog\Block\CustomContent;
 
 ?>
-<?if ($content = $block->getCustomContent()): ?>
-    <div class="custom-content"><?= $content ?></div>
-<?endif?>
+
+<?php if ($content = $block->getCustomContent()): ?>
+    <div class="custom-content">
+        <?= $content ?>
+    </div>
+<?php endif ?>

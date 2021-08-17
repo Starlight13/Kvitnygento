@@ -1,0 +1,18 @@
+{
+  "bouquet": {
+    "column": {
+      "bouquet_id": true,
+      "flower_qty": true,
+      "bouquet_height": true,
+      "color": true,
+      "description": true,
+      "packaging": true
+    },
+    "index": {
+      "BOUQUET_BOUQUET_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}

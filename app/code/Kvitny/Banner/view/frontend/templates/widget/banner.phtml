@@ -6,12 +6,12 @@ use Kvitny\Banner\Block\Widget\Banner;
 ?>
 <section class="banner" style="background-image: url('<?= $block->getImage() ?>')">
     <div class="banner__text">
-        <?php if($block->getTitle()): ?>
-            <h1 class="banner__title"><?= $block->getTitle() ?></h1>
+        <?php if($title = $block->getTitle()): ?>
+            <h1 class="banner__title"><?= $title ?></h1>
         <?php endif; ?>
 
-        <?php if($block->getSubtitle()): ?>
-            <h4 class="banner__descript"><?= __($block->getSubtitle()) ?></h4>
+        <?php if($subtitle = $block->getSubtitle()): ?>
+            <h4 class="banner__descript"><?= $subtitle ?></h4>
         <?php endif; ?>
 
         <?php if($block->hasOrderButton()): ?>

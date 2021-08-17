@@ -9,7 +9,11 @@ var config = {
     },
     map: {
         '*': {
-            instagram_carousel: 'Magento_Theme/js/instagram_carousel'
+            instagramCarousel: 'Magento_Theme/js/instagram-carousel',
+            messagesHide: 'Magento_Theme/js/messages-hide',
+            navigationBurger: 'Magento_Theme/js/navigation-burger',
+            arrowUp: 'Magento_Theme/js/arrow-up',
+            headerTransparency: 'Magento_Theme/js/header-transparency'
         }
     }
 };

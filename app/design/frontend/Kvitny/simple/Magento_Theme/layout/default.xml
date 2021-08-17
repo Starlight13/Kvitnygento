@@ -49,8 +49,8 @@
             </block>
             <block class="Magento\Framework\View\Element\Html\Link" name="about-us-link">
                 <arguments>
-                    <argument name="label" xsi:type="string" translate="true">About us</argument>
-                    <argument name="path" xsi:type="string" translate="true">#</argument>
+                    <argument name="label" xsi:type="string" translate="true">Bouquet Entity</argument>
+                    <argument name="path" xsi:type="string" translate="true">bouquet/listing/view</argument>
                 </arguments>
             </block>
             <block class="Magento\Framework\View\Element\Html\Link" name="how-to-order-link">
@@ -71,7 +71,7 @@
         <referenceBlock name="header-wrapper">
             <block class="Kvitny\Header\Block\PhoneNumber"
                    name="header.phone"
-                   template="Kvitny_Header::phoneNumber.phtml"/>
+                   template="Kvitny_Header::phone-number.phtml"/>
             <block class="Magento\Framework\View\Element\Html\Link" name="order-call">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Order a call</argument>
@@ -102,7 +102,7 @@
                 </arguments>
             </block>
             <block class="Kvitny\Header\Block\PhoneNumber" name="footer.phone"
-                   template="Kvitny_Header::phoneNumber.phtml"/>
+                   template="Kvitny_Header::phone-number.phtml"/>
             <referenceBlock name="footer-container">
                 <block class="Magento\Framework\View\Element\Template"
                        name="footer.arrow.up"

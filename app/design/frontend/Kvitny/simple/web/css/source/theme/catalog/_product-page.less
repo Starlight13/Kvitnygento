@@ -1,51 +1,129 @@
-.product-options-bottom .fieldset {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+& when (@media-common = true) {
+    .product-options-bottom .fieldset {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
 
-    .field.qty {
-        margin: 0;
-    }
-
-    .actions {
-        margin: 0 20px;
-        width: 100%;
-
-        .action.primary {
+        .field.qty {
             margin: 0;
         }
-    }
-}
 
-.fotorama__thumb-border {
-    border-color: #1d6a16;
-}
+        .actions {
+            margin: 0 20px;
+            width: 100%;
 
-.swatch-option {
-    &.image:not(.disabled):hover, .swatch-option.color:not(.disabled):hover {
-        outline: 2px solid  #1d6a16;
-    }
-
-    &.selected {
-        outline: 2px solid #18820e;
-    }
-}
-
-.block.related, .block.upsell, .block.crosssell {
-    .products.wrapper.grid.products-grid ol.products.list.items.product-items li.item.product.product-item {
-        width: 220px;
-        margin: 0 15px 15px;
-
-        div.product-item-info {
-            &:hover {
-                box-shadow: @box-shadow;
+            .action.primary {
+                margin: 0;
             }
+        }
+    }
 
-            .product.actions.product-item-actions {
+    .fotorama__nav__shaft .fotorama__thumb-border {
+        border: #1d6a16 solid 1px;
+    }
+
+    .swatch-option {
+        &.image:not(.disabled):hover, .swatch-option.color:not(.disabled):hover {
+            outline: 2px solid  #1d6a16;
+        }
+
+        &.selected {
+            outline: 2px solid #18820e;
+        }
+    }
+
+    .block.related, .block.upsell, .block.crosssell {
+        .products-grid .product-item-info:hover, .products-grid .product-item-info.active {
+            box-shadow: -1px 10px 20px 0px rgba(34, 60, 80, 0.2);
+            border: none;
+        }
+
+        .product-item-info {
+            max-width: 200px;
+            width: auto;
+
+            .product-item-actions {
                 display: flex;
-                flex-direction: row-reverse;
-                justify-content: space-between;
+            }
+        }
+    }
+
+    .review-form .action.primary.submit {
+        background-color: @secondary__color;
+        border: none;
+        padding: 10px 15px;
+    }
+}
+
+//Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .custom-content {
+        .banner {
+            position: relative;
+
+            .products.wrapper.grid.products-grid .item.product.product-item {
+                position: absolute;
+                right: 100px;
+                top: 50%;
+                transform: translate(0, -50%);
+
+                .product-item-info {
+                    width: 100%;
+                    background: #FFFFFF;
+                    padding: 20px;
+                    border: @secondary__color-transparent 1px solid;
+
+                    &:hover {
+                        margin: 0;
+                        box-shadow: none;
+                    }
+                }
+
+                .product-item-actions {
+                    margin: 0;
+                }
             }
         }
     }
 }
+
+//Tablet
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
+        .custom-content .products.wrapper.grid.products-grid .item.product.product-item {
+            display: none;
+        }
+    }
+}
+
+//Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .custom-content .products.wrapper.grid.products-grid .item.product.product-item {
+        display: none;
+    }
+
+    .product.data.items > .item.title > .switch {
+        color: @text__color;
+
+        &:hover {
+            color: @text__color;
+        }
+    }
+
+    #tab-label-additional-title {
+        color: @text__color;
+    }
+
+    #additional .additional-attributes-wrapper.table-wrapper .table.additional-attributes tbody tr {
+        th.label {
+            color: @text__color;
+        }
+
+        td.data:before {
+            color: @text__color;
+        }
+    }
+}
+
+
+

@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">bouquet_form.bouquet_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Bouquet Form</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>bouquet_form</namespace>
+        <dataScope>data.general</dataScope>
+        <deps>
+            <dep>bouquet_form.bouquet_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Kvitny\BouquetEntity\Block\Form\Bouquet\Save"/>
+            <button name="back" class="Kvitny\BouquetEntity\Block\Form\Bouquet\Back"/>
+            <button name="delete" class="Kvitny\BouquetEntity\Block\Form\Bouquet\Delete"/>
+        </buttons>
+    </settings>
+    <dataSource name="bouquet_form_data_source" component="Magento_Ui/js/form/provider">
+        <settings>
+            <submitUrl path="bouquet/bouquet/save"/>
+        </settings>
+        <dataProvider class="Kvitny\BouquetEntity\Ui\DataProvider\BouquetDataProvider" name="bouquet_form_data_source">
+            <settings>
+                <requestFieldName>bouquet_id</requestFieldName>
+                <primaryFieldName>bouquet_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+        <field name="bouquet_id" sortOrder="0" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">bouquet_id</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Entity ID</label>
+                <dataScope>bouquet_id</dataScope>
+            </settings>
+        </field>
+        <field name="bouquet_name" sortOrder="00" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">bouquet_name</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Bouquet name</label>
+                <dataScope>bouquet_name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="flower_qty" sortOrder="10" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">flower_qty</item>
+                </item>
+                <item name="validation" xsi:type="array">
+                    <item name="validate-digits" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Flower quantity</label>
+                <dataScope>flower_qty</dataScope>
+            </settings>
+        </field>
+        <field name="bouquet_height" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">bouquet_height</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Bouquet height</label>
+                <dataScope>bouquet_height</dataScope>
+            </settings>
+        </field>
+        <field name="color" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">color</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Color</label>
+                <dataScope>color</dataScope>
+            </settings>
+        </field>
+        <field name="description" sortOrder="40" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">description</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="packaging" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">packaging</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>string</dataType>
+                <label translate="true">Packaging</label>
+                <dataScope>packaging</dataScope>
+            </settings>
+        </field>
+        <field name="image" sortOrder="60" formElement="imageUploader">
+            <argument name="data" xsi:type="array">-->
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">image</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Image</label>
+                <componentType>imageUploader</componentType>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">bouquet/bouquet_image/upload</param>
+                        </uploaderConfig>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

@@ -18,7 +18,13 @@
         <referenceBlock name="content">
             <block class="Kvitny\Catalog\Block\CustomContent"
                    name="custom.content"
-                   template="Kvitny_Catalog::custom_content.phtml"/>
+                   template="Kvitny_Catalog::custom_content.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">
+                        Magento\Catalog\ViewModel\Product\Listing\PreparePostData
+                    </argument>
+                </arguments>
+            </block>
         </referenceBlock>
 
     </body>

@@ -129,6 +129,17 @@
 //Tablet
 & when (@media-target = 'desktop'), (@media-target = 'all') {
     @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
+        .products-grid .product-item-info:hover, .products-grid .product-item-info.active {
+            &:hover {
+                box-shadow: 0 70px 26px 0 rgba(34, 60, 80, 0.2);
+            }
+
+            .product-item-inner {
+                box-shadow: none;
+                border: none;
+            }
+        }
+
         .page-products .product-item-info {
             width: 190px;
 
@@ -173,6 +184,7 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
     .products-grid ol.product-items li.product-item {
         margin-bottom: 10px;
+
         &:last-child {
             margin-bottom: 0;
         }

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="bouquet" resource="default" engine="innodb" comment="Bouquet">
+        <column xsi:type="int" name="bouquet_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Bouquet Id Column"/>
+        <column xsi:type="varchar" name="bouquet_name" nullable="false" length="255" comment="Bouquet Name Column"/>
+        <column xsi:type="int" name="flower_qty" padding="10" unsigned="true" nullable="false" identity="false"
+                comment="Flower Qty Column"/>
+        <column xsi:type="int" name="bouquet_height" padding="10" unsigned="true" nullable="false" identity="false"
+                comment="Bouquet Height Column"/>
+        <column xsi:type="varchar" name="color" nullable="false" length="255" comment="Color Column"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Description Column"/>
+        <column xsi:type="varchar" name="packaging" nullable="false" length="255" comment="Packaging Column"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Image Column"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="bouquet_id"/>
+        </constraint>
+        <index referenceId="BOUQUET_BOUQUET_ID" indexType="btree">
+            <column name="bouquet_id"/>
+        </index>
+    </table>
+</schema>

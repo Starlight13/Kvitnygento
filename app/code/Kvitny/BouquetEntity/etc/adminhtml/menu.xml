@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Kvitny_BouquetEntity::bouquet_management" sortOrder="1" title="Bouquet" module="Kvitny_BouquetEntity"
+             parent="Magento_Catalog::catalog" resource="Kvitny_BouquetEntity::bouquet_management" translate="title"
+             action="bouquet/bouquet/index"/>
+    </menu>
+</config>

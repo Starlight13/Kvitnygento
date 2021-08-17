@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    .product__info .product-info-main {
+        float: none;
+    }
+}
+
+//Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .bouquet-bouquet-view {
+        .bouquet__img {
+            width: 50%;
+        }
+
+        .product__info {
+            float: right;
+            width: 45%;
+        }
+    }
+}
+
+//Small Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .bouquet-bouquet-view .product__info .product.info.detailed .col.data:before {
+        color: @text__color;
+    }
+}

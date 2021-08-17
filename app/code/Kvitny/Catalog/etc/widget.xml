@@ -1,0 +1,29 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Kvitny\Catalog\Block\Widget\BenefitsBanner" id="benefits_banner_widget">
+        <label>Benefits Banner</label>
+        <description>Widget that contains story, benefits and product card</description>
+        <parameters>
+            <parameter name="story_title" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Story title</label>
+            </parameter>
+            <parameter name="story_text" xsi:type="text" required="true" visible="true" sort_order="20">
+                <label>Story text</label>
+            </parameter>
+            <parameter name="benefits" xsi:type="block" visible="true" required="true" sort_order="30">
+                <label>Benefits</label>
+                <block class="Kvitny\Catalog\Block\Widget\Editor" />
+            </parameter>
+            <parameter name="banner_image" xsi:type="block" visible="true" required="false" sort_order="40">
+                <label translate="true">Image Upload</label>
+                <block class="Kvitny\Banner\Block\Adminhtml\Widget\ImagePicker">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

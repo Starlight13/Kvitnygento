@@ -7,4 +7,15 @@
         <plugin name="Kvitny_Catalog_State_Selector_Plugin"
                 type="Kvitny\Catalog\Plugin\Helper\Product\View"/>
     </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="add_product_object_to_image_data_array"
+                type="Magento\Swatches\Model\Plugin\ProductImage" />
+    </type>
+    <type name="Kvitny\Catalog\Block\Widget\BenefitsBanner">
+        <arguments>
+            <argument name="templateProcessor" xsi:type="object">
+                Magento\Widget\Model\Template\Filter
+            </argument>
+        </arguments>
+    </type>
 </config>

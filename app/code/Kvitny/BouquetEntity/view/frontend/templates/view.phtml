@@ -1,0 +1,67 @@
+<?php
+/** @var BouquetView $block */
+
+use Kvitny\BouquetEntity\Block\BouquetView;
+
+$bouquet = $block->getCurrentBouquet()
+?>
+<img class="bouquet__img" src="<?= $block->getImage($bouquet) ?>" alt="<?= $bouquet->getBouquetName() ?>"/>
+<div class="product__info">
+    <div class="product-info-main">
+        <div class="page-title-wrapper product">
+            <h1 class="page-title">
+                        <span class="base" data-ui-id="page-title-wrapper"
+                              itemprop="name"><?= $bouquet->getBouquetName() ?></span></h1>
+        </div>
+        <div class="product attribute overview">
+            <div class="value" itemprop="description"><p><?= $bouquet->getDescription() ?></p></div>
+        </div>
+    </div>
+    <div class="product info detailed">
+        <div class="product data items" role="tablist">
+            <div class="data item title active" data-role="collapsible" id="tab-label-description" role="tab"
+                 data-collapsible="true" aria-controls="description" aria-selected="false" aria-expanded="true"
+                 tabindex="0">
+                <a class="data switch" tabindex="-1" data-toggle="trigger" href="#description"
+                   id="tab-label-description-title">
+                    Details </a>
+            </div>
+            <div class="data item content" aria-labelledby="tab-label-description" id="description"
+                 data-role="content" role="tabpanel" aria-hidden="false">
+                <div class="product attribute description">
+                    <div class="value"><?= $bouquet->getDescription() ?></div>
+                </div>
+                <div class="additional-attributes-wrapper table-wrapper">
+                    <table class="data table additional-attributes" id="product-attribute-specs-table">
+                        <caption class="table-caption">More Information</caption>
+                        <tbody>
+                        <tr>
+                            <th class="col label" scope="row">Bouquet size</th>
+                            <td class="col data" data-th="Bouquet size"><?= /* @NoEscape */
+                                $bouquet->getFlowerQty() ?> flowers
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="col label" scope="row">Bouquet height</th>
+                            <td class="col data" data-th="Bouquet height"><?= /* @NoEscape */
+                                $bouquet->getBouquetHeight() ?> cm
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="col label" scope="row">Color</th>
+                            <td class="col data" data-th="Color"><?= /* @NoEscape */
+                                $bouquet->getColor() ?></td>
+                        </tr>
+                        <tr>
+                            <th class="col label" scope="row">Packaging</th>
+                            <td class="col data" data-th="Packaging"><?= /* @NoEscape */
+                                $bouquet->getPackaging() ?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

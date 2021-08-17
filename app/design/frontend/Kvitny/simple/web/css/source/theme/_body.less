@@ -1,4 +1,10 @@
-body {
-    font-family: @font-family__base;
-    font-style: normal;
+& when (@media-common = true) {
+    body {
+        font-family: @font-family__base;
+        font-style: normal;
+    }
+
+    button[type="submit"] {
+        background-color: @secondary__color;
+    }
 }

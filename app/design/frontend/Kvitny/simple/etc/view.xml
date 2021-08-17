@@ -14,6 +14,10 @@
                 <width>100</width>
                 <height>100</height>
             </image>
+            <image id="related_products_list" type="small_image">
+                <width>200</width>
+                <height>200</height>
+            </image>
         </images>
     </media>
 </view>

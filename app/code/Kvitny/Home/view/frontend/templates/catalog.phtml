@@ -10,7 +10,7 @@ $categories = $block->getCategories();
         <?php foreach ($categories as $category): ?>
             <?php if($category->getId() != 2 && $category->getId() != 1): ?>
                 <a href="<?= $category->getUrl() ?>" >
-                    <div class="catalog__card" style="background: url('<?= $category->getImageUrl() ?>')">
+                    <div class="catalog__card" style="background-image: url('<?= $category->getImageUrl() ?>')">
                         <div class="card__footer">
                             <span class="card__title"><?= __($category->getName()); ?></span>
                         </div>

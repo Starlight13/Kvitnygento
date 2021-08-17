@@ -4,6 +4,7 @@
         margin: 0;
         height: 700px;
         background-position: 48% 0%;
+        background-size: cover;
 
         .banner__text {
             .column-space-between();
@@ -32,6 +33,17 @@
             border: none;
         }
     }
+
+    div.custom-content {
+        .banner {
+            .banner__text {
+                background: rgba(256,256,256,0.4);
+                padding: 20px;
+                backdrop-filter: blur(3px);
+                position: absolute;
+            }
+        }
+    }
 }
 
 //  Mobile (styles-m.css)
@@ -58,7 +70,6 @@
     }
 }
 
-//
 //  Desktop (style-l.css)
 //  _____________________________________________
 

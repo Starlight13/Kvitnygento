@@ -76,6 +76,7 @@
 
             .logo {
                 margin: 10px;
+                min-width: 180px;
             }
 
             .phone-number {
@@ -115,26 +116,6 @@
 
                 span.counter.qty {
                     display: none;
-                }
-            }
-
-            .block.block-minicart.ui-dialog-content.ui-widget-content {
-                right: auto;
-                left: 0;
-
-                &:before {
-                    right: auto;
-                    left: 12px;
-                }
-
-                &:after {
-                    right: auto;
-                    left: 11px;
-                }
-
-                #btn-minicart-close {
-                    right: auto;
-                    left: 0;
                 }
             }
 
@@ -320,13 +301,34 @@
             .phone-number {
                 order: 4;
             }
+
+            .block.block-minicart.ui-dialog-content.ui-widget-content {
+                right: auto;
+                left: 0;
+
+                &:before {
+                    right: auto;
+                    left: 12px;
+                }
+
+                &:after {
+                    right: auto;
+                    left: 11px;
+                }
+
+                #btn-minicart-close {
+                    right: auto;
+                    left: 0;
+                }
+            }
         }
 
         nav.navigation ul {
             flex-direction: column;
 
             li.category-item a {
-                line-height: 35px;
+                line-height: 25px;
+                font-size: @font-size__s;
             }
         }
     }

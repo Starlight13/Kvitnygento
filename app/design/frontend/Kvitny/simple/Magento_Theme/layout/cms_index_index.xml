@@ -20,7 +20,7 @@
             <block class="Magento\Framework\View\Element\Template"
                    name="instagram.carousel"
                    as="instagram_carousel"
-                   template="Magento_Theme::instagram_carousel.phtml"
+                   template="Magento_Theme::instagram-carousel.phtml"
                    after="-">
                 <block class="Magento\Cms\Block\Block" name="instagram.images">
                     <arguments>

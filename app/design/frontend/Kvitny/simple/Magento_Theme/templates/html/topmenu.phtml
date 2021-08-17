@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menuHtml = $block->getHtml('level-top', 'submenu', $columnsLimit)
+?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @noEscape */ $_menuHtml?>
+        <?= $block->getChildHtml() ?>
+    </ul>
+</nav>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "headerTransparency": {
+                "wrapper": ".page-header"
+            }
+        }
+    }
+</script>
+<script>
+    require(['jquery'], function($) {
+        if ($(".header.content > ul.header.links > li:nth-child(1)").attr('class') == "customer-welcome") {
+            $(".header.content > ul.header.links > li:nth-child(2)").on('click', function (event) {
+                event.preventDefault();
+                $("nav.navigation").slideToggle(500);
+            })
+        } else {
+            $(".header.content > ul.header.links > li:nth-child(1)").on('click', function (event) {
+                event.preventDefault();
+                $("nav.navigation").slideToggle(500);
+            })
+        }
+
+        // if(document.body.classList.contains("cms-index-index")) {
+        //     console.log('Wrapper');
+        //     $(document).on('scroll', () => {
+        //         $('.page-header').toggleClass('solid', $(this).scrollTop() > $('.header.content').height());
+        //     });
+        // }
+    });
+</script>

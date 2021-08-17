@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">bouquet_listing.bouquet_listing_data_source</item>
+            <item name="deps" xsi:type="string">bouquet_listing.bouquet_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New</label>
+            </button>
+        </buttons>
+        <spinner>bouquet_listing_columns</spinner>
+        <deps>
+            <dep>bouquet_listing.bouquet_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="bouquet_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">bouquet_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Kvitny_BouquetEntity::bouquet_management</aclResource>
+        <dataProvider class="Kvitny\BouquetEntity\Ui\DataProvider\BouquetDataProvider"
+                      name="bouquet_listing_data_source">
+            <settings>
+                <requestFieldName>bouquet_id</requestFieldName>
+                <primaryFieldName>bouquet_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="bouquet_listing_columns">
+        <column name="bouquet_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="bouquet_name">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Bouquet Name</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="flower_qty">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Flower quantity</label>
+            </settings>
+        </column>
+        <column name="image">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Image</label>
+            </settings>
+        </column>
+        <column name="bouquet_height">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Bouquet Height</label>
+            </settings>
+        </column>
+        <column name="color">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Color</label>
+            </settings>
+        </column>
+        <column name="description">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Description</label>
+            </settings>
+        </column>
+        <column name="packaging">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Packaging</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Kvitny\BouquetEntity\Ui\Component\Listing\Column\BouquetBlockActions">
+            <settings>
+                <indexField>bouquet_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
