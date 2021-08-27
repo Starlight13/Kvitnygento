@@ -1,4 +1,5 @@
 <?php
+
 namespace Kvitny\FrontendGrid\Controller\Bookmark;
 
 use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;

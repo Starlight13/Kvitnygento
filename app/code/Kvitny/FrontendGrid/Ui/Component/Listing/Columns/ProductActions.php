@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Kvitny\FrontendGrid\Ui\Component\Listing\Columns;
-
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -10,7 +8,10 @@ use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\UrlInterface;
 use Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable;
 
-
+/**
+ * Class ProductActions
+ * @package Kvitny\FrontendGrid\Ui\Component\Listing\Columns
+ */
 class ProductActions extends Column
 {
     /**

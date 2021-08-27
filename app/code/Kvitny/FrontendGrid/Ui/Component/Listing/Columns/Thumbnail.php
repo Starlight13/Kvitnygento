@@ -22,12 +22,14 @@ class Thumbnail extends Column
 
     const ALT_FIELD = 'name';
 
+    /**
+     * @var StoreManagerInterface
+     */
+    private StoreManagerInterface $storeManager;
 
     /**
-     * @var UrlInterface
+     * @var Image
      */
-    private UrlInterface $urlBuilder;
-    private StoreManagerInterface $storeManager;
     private Image $imageHelper;
 
     /**
@@ -35,6 +37,7 @@ class Thumbnail extends Column
      * @param UiComponentFactory $uiComponentFactory
      * @param UrlInterface $urlBuilder
      * @param StoreManagerInterface $storeManager
+     * @param Image $imageHelper
      * @param array $components
      * @param array $data
      */
