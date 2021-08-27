@@ -55,8 +55,8 @@
             </block>
             <block class="Magento\Framework\View\Element\Html\Link" name="how-to-order-link">
                 <arguments>
-                    <argument name="label" xsi:type="string" translate="true">How to order</argument>
-                    <argument name="path" xsi:type="string" translate="true">#</argument>
+                    <argument name="label" xsi:type="string" translate="true">Product Grid</argument>
+                    <argument name="path" xsi:type="string" translate="true">frontend_grid/index/index</argument>
                 </arguments>
             </block>
             <block class="Magento\Framework\View\Element\Html\Link" name="pay-and-delivery-link">

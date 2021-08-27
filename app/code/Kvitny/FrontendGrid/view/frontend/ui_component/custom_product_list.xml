@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">custom_product_list.custom_product_list_data_source</item>
+            <item name="deps" xsi:type="string">custom_product_list.custom_product_list_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">products_columns</item>
+    </argument>
+    <dataSource name="custom_product_list_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Kvitny\FrontendGrid\Ui\DataProvider\ProductList</argument>
+            <argument name="name" xsi:type="string">custom_product_list_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="frontend_grid/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="cacheRequests" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/bookmarks/bookmarks</item>
+                    <item name="displayArea" xsi:type="string">dataGridActions</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="saveUrl" xsi:type="url" path="frontend_grid/bookmark/save"/>
+                        <item name="deleteUrl" xsi:type="url" path="frontend_grid/bookmark/delete"/>
+                        <item name="namespace" xsi:type="string">custom_product_list</item>
+                    </item>
+                </item>
+            </argument>
+        </bookmark>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="products_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">custom_product_list.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current</item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="controlVisibility" xsi:type="boolean">true</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">custom_product_list.listing_top.bookmarks</item>
+                        <item name="root" xsi:type="string">columns.${ $.index }</item>
+                        <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="thumbnail" class="Kvitny\FrontendGrid\Ui\Component\Listing\Columns\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">
+            <settings>
+                <altField>name</altField>
+                <hasPreview>0</hasPreview>
+                <addField>true</addField>
+                <label translate="true">Thumbnail</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Product Name</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+        </column>
+        <column name="type_id" component="Magento_Ui/js/grid/columns/select" sortOrder="40">
+            <settings>
+                <options class="Magento\Catalog\Model\Product\Type"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Type</label>
+            </settings>
+        </column>
+        <column name="attribute_set_id" class="Magento\Catalog\Ui\Component\Listing\Columns\AttributeSetId" component="Magento_Ui/js/grid/columns/select" sortOrder="50">
+            <settings>
+                <options class="Magento\Catalog\Model\Product\AttributeSet\Options"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Attribute Set</label>
+            </settings>
+        </column>
+        <column name="sku">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Product SKU</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                </item>
+            </argument>
+        </column>
+        <column name="price" class="Magento\Catalog\Ui\Component\Listing\Columns\Price" sortOrder="70">
+            <settings>
+                <addField>true</addField>
+                <filter>textRange</filter>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="visibility" component="Magento_Ui/js/grid/columns/select" sortOrder="80">
+            <settings>
+                <addField>true</addField>
+                <options class="Magento\Catalog\Model\Product\Visibility"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Visibility</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="90">
+            <settings>
+                <addField>true</addField>
+                <options class="Magento\Catalog\Model\Product\Attribute\Source\Status"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Kvitny\FrontendGrid\Ui\Component\Listing\Columns\ProductActions" sortOrder="200">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

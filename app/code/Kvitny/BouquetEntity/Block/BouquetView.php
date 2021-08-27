@@ -42,6 +42,13 @@ class BouquetView extends Template
         parent::__construct($context, $data);
     }
 
+    public function _prepareLayout()
+    {
+        $this->pageConfig->getTitle()->set($this->getCurrentBouquet()->getBouquetName());
+
+        return parent::_prepareLayout();
+    }
+
     /**
      * @return mixed
      */
