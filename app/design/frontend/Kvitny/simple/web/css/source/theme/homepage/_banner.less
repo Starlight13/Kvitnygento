@@ -1,9 +1,10 @@
 & when (@media-common = true) {
     .banner {
+        .lib-css(background-size, cover, 1);
         .section-with-photo();
         margin: 0;
         height: 700px;
-        background-position: 48% 0%;
+        background-position: 48% 0;
         background-size: cover;
 
         .banner__text {
@@ -24,6 +25,7 @@
         }
 
         .order__button {
+            .lib-css(box-shadow, @box-shadow, 1);
             .centered();
             background: @secondary__color;
             box-shadow: @box-shadow;
@@ -34,15 +36,11 @@
         }
     }
 
-    div.custom-content {
-        .banner {
-            .banner__text {
-                background: rgba(256,256,256,0.4);
-                padding: 20px;
-                backdrop-filter: blur(3px);
-                position: absolute;
-            }
-        }
+    .custom-content .banner .banner__text {
+        background: rgba(256, 256, 256, 0.4);
+        padding: 20px;
+        backdrop-filter: blur(3px);
+        position: absolute;
     }
 }
 

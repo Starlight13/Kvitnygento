@@ -14,6 +14,7 @@ use Magento\Ui\Api\BookmarkRepositoryInterface;
 use Magento\Ui\Api\Data\BookmarkInterface;
 use Magento\Ui\Api\Data\BookmarkInterfaceFactory;
 use Magento\Ui\Controller\Adminhtml\AbstractAction;
+use RuntimeException;
 
 /**
  * Class Save action
@@ -71,7 +72,7 @@ class Save extends AbstractAction implements HttpPostActionInterface
      * @param UserContextInterface $userContext
      * @param DecoderInterface $jsonDecoder
      * @param Json|null $serializer
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function __construct(
         Context $context,

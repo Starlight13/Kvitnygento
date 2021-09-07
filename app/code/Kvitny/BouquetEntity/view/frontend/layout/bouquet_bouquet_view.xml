@@ -3,6 +3,8 @@
       layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <referenceBlock name="page.main.title" remove="true" />
+
         <referenceContainer name="content">
             <block class="Kvitny\BouquetEntity\Block\BouquetView"
                    name="hello.world"

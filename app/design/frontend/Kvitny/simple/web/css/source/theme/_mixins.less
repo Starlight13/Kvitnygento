@@ -1,16 +1,24 @@
 .section-with-photo {
+    .lib-css(display, flex, 1);
+    .lib-css(align-items, center, 1);
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
 }
 
 .column-space-between {
+    .lib-css(display, flex, 1);
+    .lib-css(flex-direction, column, 1);
+    .lib-css(justify-content, space-between, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .section {
+    .lib-css(display, flex, 1);
+    .lib-css(flex-direction, column, 1);
+    .lib-css(align-items, center, 1);
     margin: 25px;
     display: flex;
     flex-direction: column;
@@ -18,6 +26,9 @@
 }
 
 .centered {
+    .lib-css(display, flex, 1);
+    .lib-css(justify-content, center, 1);
+    .lib-css(align-items, center, 1);
     display: flex;
     justify-content: center;
     align-items: center;

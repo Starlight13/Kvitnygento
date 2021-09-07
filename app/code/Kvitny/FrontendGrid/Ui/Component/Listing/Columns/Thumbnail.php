@@ -11,7 +11,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Catalog\Helper\Image;
 
 /**
- * Class Thumbnail
+ * Class for thumbnail image render.
  *
  * @api
  * @since 100.0.2
@@ -53,7 +53,6 @@ class Thumbnail extends Column
     {
         parent::__construct($context, $uiComponentFactory, $components, $data);
         $this->storeManager = $storeManager;
-        $this->urlBuilder = $urlBuilder;
         $this->imageHelper = $imageHelper;
     }
 
@@ -70,7 +69,8 @@ class Thumbnail extends Column
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
                 if (isset($item[$fieldName])) {
-                    $imageUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . 'catalog/product' . $item[$fieldName];
+                    $imageUrl = $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA)
+                        . 'catalog/product' . $item[$fieldName];
                     $item[$fieldName . '_src'] = $imageUrl;
                     $item[$fieldName . '_alt'] = $this->getAlt($item);
                 } else {

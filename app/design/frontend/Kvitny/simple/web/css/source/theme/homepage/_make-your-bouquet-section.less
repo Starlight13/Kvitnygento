@@ -6,6 +6,11 @@
         background: url("@{baseDir}images/make-your-bouquet.png") 50% 50%;
 
         .make-your-bouquet__div {
+            .lib-css(box-sizing, border-box, 1);
+            .lib-css(backdrop-filter, blur(10px), 1);
+            .lib-css(display, flex, 1);
+            .lib-css(flex-direction, column, 1);
+            .lib-css(align-items, center, 1);
             box-sizing: border-box;
             padding: 50px 30px;
             max-width: 491px;
@@ -46,6 +51,7 @@
                 }
 
                 .textfield {
+                    .lib-css(box-sizing, border-box, 1);
                     box-sizing: border-box;
                     background-color: rgba(166, 185, 161, 0.3);
                     border: none;
@@ -72,15 +78,12 @@
 
 //Desktop
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
-    .make-your-bouquet__section {
-        .make-your-bouquet__div {
-            margin-left: 9%;
-            height: 471px;
-            form {
-                .textfield {
-                    height: 40px;
-                }
-            }
+    .make-your-bouquet__section .make-your-bouquet__div {
+        margin-left: 9%;
+        height: 471px;
+
+        form .textfield {
+            height: 40px;
         }
     }
 }
@@ -88,14 +91,13 @@
 //Tablet
 & when (@media-target = 'desktop'), (@media-target = 'all') {
     @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
-        .make-your-bouquet__section {
-            .make-your-bouquet__div {
-                margin: 20px;
-                height: 471px;
-                form {
-                    .textfield {
-                        font-size: 15px;
-                    }
+        .make-your-bouquet__section .make-your-bouquet__div {
+            margin: 20px;
+            height: 471px;
+
+            form {
+                .textfield {
+                    font-size: 15px;
                 }
             }
         }
@@ -104,27 +106,25 @@
 
 //Phone
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .make-your-bouquet__section {
-        .make-your-bouquet__div {
-            margin: 20px;
-            height: 471px;
-            form {
-                .textfield {
-                    font-size: 15px;
-                }
+    .make-your-bouquet__section .make-your-bouquet__div {
+        margin: 20px;
+        height: 471px;
+
+        form {
+            .textfield {
+                font-size: 15px;
             }
         }
     }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
-    .make-your-bouquet__section {
-        .make-your-bouquet__div {
-            height: 100%;
-            form {
-                .textfield {
-                    font-size: 15px;
-                }
+    .make-your-bouquet__section .make-your-bouquet__div {
+        height: 100%;
+
+        form {
+            .textfield {
+                font-size: 15px;
             }
         }
     }

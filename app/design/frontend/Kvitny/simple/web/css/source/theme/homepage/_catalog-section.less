@@ -7,10 +7,11 @@
             .centered();
 
             .catalog__card{
+                .lib-css(background-size, cover, 1);
                 position: relative;
                 z-index: -1;
-                background-repeat: no-repeat ;
-                background-size: cover ;
+                background-repeat: no-repeat;
+                background-size: cover;
                 background-position: center;
             }
 
@@ -30,10 +31,13 @@
 //Desktop
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
     .catalog__section .catalog__grid {
+        .lib-css(display, grid, 1);
         display: grid;
         width: 80%;
         grid-template-columns: 2.5fr repeat(2, 3fr);
+        -ms-grid-columns:  2.5fr 3fr 3fr;
         grid-auto-rows: minmax(200px, auto);
+        -ms-grid-rows: minmax(200px, auto);
         column-gap: 30px;
         row-gap: 30px;
 
@@ -55,10 +59,13 @@
 & when (@media-target = 'desktop'), (@media-target = 'all') {
     @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
         .catalog__section .catalog__grid {
+            .lib-css(display, grid, 1);
             display: grid;
             width: 100%;
-            grid-template-columns: repeat(2, 3fr);
+            grid-template-columns: 2.5fr repeat(2, 3fr);
+            -ms-grid-columns:  2.5fr 3fr 3fr;
             grid-auto-rows: minmax(200px, auto);
+            -ms-grid-rows: minmax(200px, auto);
             column-gap: 30px;
             row-gap: 30px;
 

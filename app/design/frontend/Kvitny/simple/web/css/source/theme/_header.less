@@ -1,6 +1,7 @@
 & when (@media-common = true) {
     .cms-home.cms-index-index.page-layout-1column .page-wrapper {
         .page-header {
+            .lib-css(transition, background-color linear 300ms, 1);
             z-index: 10;
             position: fixed;
             width: 100%;
@@ -8,6 +9,7 @@
             transition: background-color linear 300ms;
 
             &.solid {
+                .lib-css(box-shadow, @box-shadow, 1);
                 background-color: @secondary__color;
                 box-shadow: @box-shadow;
             }
@@ -97,7 +99,9 @@
                 }
             }
 
-            div.cart-wrapper {
+            .cart-wrapper {
+                .lib-css(display, flex, 1);
+                .lib-css(align-items, center, 1);
                 display: flex;
                 align-items: center;
 
@@ -114,25 +118,27 @@
                     content: url("@{baseDir}/images/cart.svg");
                 }
 
-                span.counter.qty {
+                .counter.qty {
                     display: none;
                 }
             }
 
-            div.minicart-items-wrapper {
+            .minicart-items-wrapper {
                 padding: 0 10px;
 
-                li.item.product.product-item {
+                .item.product.product-item {
                     padding: 10px;
                     position: relative;
 
-                    a.product-item-photo {
+                    .product-item-photo {
+                        .lib-css(transform, translate(0px, -50%), 1);
                         position: absolute;
                         top: 50%;
                         transform: translate(0px, -50%);
                     }
 
                     .product.actions {
+                        .lib-css(transform, translate(0px, -50%), 1);
                         position: absolute;
                         right: 20px;
                         top: 50%;
@@ -145,6 +151,7 @@
                     }
 
                     .update-cart-item {
+                        .lib-css(transform, translate(0px, -50%), 1);
                         right: 80px;
                         position: absolute;
                         top: 50%;
@@ -181,6 +188,7 @@
     }
 
     .header.links {
+        .lib-css(justify-content, space-between, 1);
         .centered();
         margin: 20px;
         width: 405px;
@@ -219,6 +227,7 @@
     @media only screen and (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
         .page-header {
             .header.content {
+                .lib-css(justify-content, space-between, 1);
                 .centered();
                 justify-content: space-between;
                 height: 80px;
@@ -228,6 +237,7 @@
                 }
 
                 .header__navigation-icon {
+                    .lib-css(flex-direction, column, 1);
                     .centered();
                     margin: 10px;
                     border: none;
@@ -245,6 +255,7 @@
             }
 
             nav.navigation ul {
+                .lib-css(flex-direction, column, 1);
                 flex-direction: column;
 
                 li.category-item a {
@@ -259,8 +270,12 @@
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .page-header {
         .header.content {
+            .lib-css(display, grid, 1);
+            .lib-css(justify-items, center, 1);
+            .lib-css(disalign-itemsplay, center, 1);
             display: grid;
             grid-template-columns: 1fr 1fr;
+            -ms-grid-columns: 1fr 1fr;
             justify-items: center;
             align-items: center;
             height: 125px;
@@ -274,10 +289,13 @@
             }
 
             .logo {
+                .lib-css(order, 1, 1);
                 order: 1;
             }
 
             .header__navigation-icon {
+                .lib-css(order, 2, 1);
+                .lib-css(flex-direction, column, 1);
                 .centered();
                 order: 2;
                 margin: 10px;
@@ -295,10 +313,12 @@
             }
 
             .cart-wrapper {
+                .lib-css(order, 3, 1);
                 order: 3;
             }
 
             .phone-number {
+                .lib-css(order,42, 1);
                 order: 4;
             }
 
@@ -323,10 +343,11 @@
             }
         }
 
-        nav.navigation ul {
+        .navigation ul {
+            .lib-css(flex-direction, column, 1);
             flex-direction: column;
 
-            li.category-item a {
+            .category-item a {
                 line-height: 25px;
                 font-size: @font-size__s;
             }

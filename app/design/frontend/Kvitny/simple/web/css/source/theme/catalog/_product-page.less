@@ -1,5 +1,8 @@
 & when (@media-common = true) {
     .product-options-bottom .fieldset {
+        .lib-css(display, flex, 1);
+        .lib-css(justify-content, space-between, 1);
+        .lib-css(align-items, flex-end, 1);
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
@@ -34,6 +37,7 @@
 
     .block.related, .block.upsell, .block.crosssell {
         .products-grid .product-item-info:hover, .products-grid .product-item-info.active {
+            .lib-css(box-shadow, -1px 10px 20px 0px rgba(34, 60, 80, 0.2), 1);
             box-shadow: -1px 10px 20px 0px rgba(34, 60, 80, 0.2);
             border: none;
         }
@@ -43,6 +47,7 @@
             width: auto;
 
             .product-item-actions {
+                .lib-css(display, flex, 1);
                 display: flex;
             }
         }
@@ -62,6 +67,7 @@
             position: relative;
 
             .products.wrapper.grid.products-grid .item.product.product-item {
+                .lib-css(transform, translate(0, -50%), 1);
                 position: absolute;
                 right: 100px;
                 top: 50%;
@@ -69,7 +75,7 @@
 
                 .product-item-info {
                     width: 100%;
-                    background: #FFFFFF;
+                    background: #ffffff;
                     padding: 20px;
                     border: @secondary__color-transparent 1px solid;
 

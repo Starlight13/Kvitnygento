@@ -4,8 +4,11 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="Kvitny_FrontendGrid::css/backend.css"/>
+        <title>Products</title>
     </head>
     <body>
+        <referenceBlock name="page.main.title" remove="true" />
+
         <referenceContainer name="content">
             <uiComponent name="custom_product_list"/>
         </referenceContainer>
